@@ -1,0 +1,245 @@
+@font-face {
+  font-family: proximaNova;
+  src: url(./assets/fonts/ProximaNovaRegular.ttf);
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: proximaNova, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navbar {
+  height: 60px;
+  background-color: #171a18;
+  box-shadow: 0px 3px 6px #00000029;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    margin: 10px;
+  }
+
+  .navbar {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar .buttons {
+    margin: 10px;
+  }
+}
+
+/* navbar svg */
+svg {
+  margin-right: 10px;
+}
+.a {
+  fill: "none";
+}
+.b,
+.c,
+.d {
+  stroke: none;
+}
+.c {
+  fill: #ffe923;
+}
+.d {
+  fill: #f3f3f3;
+}
+
+/* navbar main-heading */
+.heading {
+  font-size: 1.6rem;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading span {
+  font-size: 1rem !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .heading span {
+    display: none;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 60px);
+}
+
+.playground {
+  width: 576px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.45s ease-in-out;
+}
+
+.code-editor {
+  height: 100%;
+  font-size: 18px;
+  transition: height 0.25s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  color: #fafafa;
+  background-color: #373a41;
+  cursor: pointer;
+}
+
+.editor-resize-button {
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1.4rem;
+  background: #262629;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bolder;
+  padding: 0;
+  cursor: pointer;
+}
+
+.react-codemirror2 {
+  height: 100%;
+  overflow: auto;
+}
+
+.CodeMirror {
+  height: 100% !important;
+}
+
+.CodeMirror-scroll {
+  background-color: #1d1e22;
+}
+
+.CodeMirror-gutter {
+  background-color: #2a2a34c9;
+}
+
+.default-window {
+  flex-grow: 1;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #000000, #262626);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+.display-window {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.result {
+  height: 100%;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.buttons {
+  display: flex;
+}
+
+.btn {
+  color: white;
+  background-color: #373a41;
+  font-size: 1rem;
+  padding: 5px 12px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #373a41;
+  transition: background 0.3s;
+  cursor: pointer;
+  border-radius: 2.5px;
+}
+
+.btn:hover {
+  background: #494949;
+  border-color: #494949;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 650px) {
+  .App {
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  .main {
+    flex-direction: column-reverse;
+  }
+
+  .playground {
+    width: 100%;
+  }
+
+  .code-editor {
+    height: 300px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .display-window > button {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .btn {
+    font-size: 13px;
+  }
+}
