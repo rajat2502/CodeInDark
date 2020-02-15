@@ -7,7 +7,7 @@ import DisplayWindow from "./components/DisplayWindow";
 import CodeEditor from "./components/CodeEditor";
 import Navbar from "./components/Navbar";
 
-const time = "60 min";
+let seeOutputtime = 3;
 
 const App = () => {
   const codeMirrorOptions = {
@@ -38,26 +38,33 @@ const App = () => {
     }
   };
 
-  // logic to reset everyhting
-  const reset = () => {
-    if (window.confirm("Reset Pen?")) {
-      sethtml("");
-      setcss("");
-      setjs("");
-      localStorage.clear();
-    }
-  };
-
   // logic to view output
   const seeOutput = () => {
-    if (window.confirm("Are you sure you want to see the output?")) {
-      setOutput(true);
+    if (seeOutputtime > 0) {
+      if (
+        window.confirm(
+          `You have ${seeOutputtime} chance(s) left. Are you sure you want to utilise your chance?`
+        )
+      ) {
+        seeOutputtime--;
+        setOutput(true);
+        setTimeout(() => {
+          setOutput(false);
+        }, 5000);
+      }
+    } else {
+      window.alert("Sorry, You don't have any chances left!");
     }
   };
 
   // logic to start game
   const startGame = () => {
     setcode(true);
+  };
+
+  const stopGame = () => {
+    setcode(false);
+    setOutput(true);
   };
 
   // logic to get data from local storage
@@ -73,26 +80,40 @@ const App = () => {
   return (
     <div className="App">
       <Navbar
-        reset={reset}
         save={saveToLocalStorage}
         view={view}
         html={html}
         output={output}
-        setOutput={setOutput}
+        seeOutput={seeOutput}
         code={code}
       />
       <div className="main">
-        {!output
-          ? <DefaultWindow code={code} startGame={startGame} />
+        {/* {!output
+          ? <DefaultWindow
+              code={code}
+              startGame={startGame}
+              stopGame={stopGame}
+            />
           : <DisplayWindow
               html={html}
               css={css}
               js={js}
-              reset={reset}
               saveToLocalStorage={saveToLocalStorage}
-              view={view}
-              toggleView={toggleView}
-            />}
+            />} */}
+
+        <DefaultWindow
+          code={code}
+          startGame={startGame}
+          stopGame={stopGame}
+          output={output}
+        />
+        <DisplayWindow
+          html={html}
+          css={css}
+          js={js}
+          saveToLocalStorage={saveToLocalStorage}
+          output={output}
+        />
 
         <section className="playground" style={!code ? { width: "0" } : null}>
           <CodeEditor
@@ -112,7 +133,7 @@ const App = () => {
             setFn={setcss}
           />
           <CodeEditor
-            langName="Javascript"
+            langName="JavaScript"
             value={js}
             mode="javascript"
             codeMirrorOptions={codeMirrorOptions}

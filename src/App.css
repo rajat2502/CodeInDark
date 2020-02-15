@@ -243,3 +243,16 @@ svg {
     font-size: 13px;
   }
 }
+
+.default-window-head {
+  margin: 10px;
+}
+
+.timer span {
+  font-weight: 200;
+  font-size: 1.8rem;
+}
+
+.countdown {
+  color: red;
+}

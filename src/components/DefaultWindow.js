@@ -3,13 +3,13 @@ import FuntionButton from "./FuntionButton";
 
 let counter;
 
-const DefaultWindow = ({ code, startGame }) => {
-  const [min, setmin] = useState("60");
-  const [sec, setsec] = useState("00");
+const DefaultWindow = ({ code, startGame, stopGame, output }) => {
+  const [min, setmin] = useState();
+  const [sec, setsec] = useState();
   const [start, setstart] = useState(false);
 
   const startTimer = (duration = 3600) => {
-    var timer = duration,
+    let timer = duration,
       minutes,
       seconds;
     counter = setInterval(function() {
@@ -27,29 +27,30 @@ const DefaultWindow = ({ code, startGame }) => {
         stopTimer();
       }
     }, 1000);
-
     startGame();
   };
 
+  // logic to stop timer
   const stopTimer = () => {
-    console.log(min, sec);
     setstart(false);
     clearInterval(counter);
+    stopGame();
   };
 
   return (
-    <div className="default-window">
-      <h1>Code in the Dark</h1>
-      <br />
+    <div className="default-window" style={output ? { display: "none" } : null}>
+      <h1 className="default-window-head">Code in the Dark</h1>
       {!code
         ? <FuntionButton
             children="Start Coding!"
-            onClick={() => startTimer(10)}
+            onClick={() => startTimer(100)}
           />
         : null}
       {start
         ? <div className="timer">
-            {`${min} : ${sec}`}
+            <span
+              className={min < 5 ? "countdown" : null}
+            >{`${min} : ${sec}`}</span>
           </div>
         : null}
     </div>
