@@ -40,10 +40,33 @@ const DefaultWindow = ({ code, startGame, stopGame, output }) => {
   return (
     <div className="default-window" style={output ? { display: "none" } : null}>
       <h1 className="default-window-head">Code in the Dark</h1>
+      {/* <h3>Instructions:</h3>
+      <ol>
+        <li>
+          l"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        </li>
+        <li>
+          l"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        </li>
+        <li>
+          l"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        </li>
+        <li>
+          l"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        </li>
+        <li>
+          l"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        </li>
+        <li>
+          l"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        </li>
+      </ol> */}
+
       {!code
         ? <FuntionButton
             children="Start Coding!"
-            onClick={() => startTimer(100)}
+            onClick={() => startTimer(300)}
+            styles={{ fontSize: "1.4rem" }}
           />
         : null}
       {start

@@ -62,19 +62,45 @@ const App = () => {
     setcode(true);
   };
 
+  // logic to stop the game
   const stopGame = () => {
     setcode(false);
     setOutput(true);
   };
 
-  // logic to get data from local storage
   useEffect(() => {
-    const langObj = JSON.parse(localStorage.getItem("langObj"));
-    if (langObj !== null) {
-      sethtml(langObj.html);
-      setcss(langObj.css);
-      setjs(langObj.js);
-    }
+    // const langObj = JSON.parse(localStorage.getItem("langObj"));
+    // if (langObj !== null) {
+    //   sethtml(langObj.html);
+    //   setcss(langObj.css);
+    //   setjs(langObj.js);
+    // }
+    // logic to disable from inspect/copy/paste
+    document.onkeydown = function(e) {
+      // to disble inspect
+      if (e.keyCode == 123) {
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && e.keyCode === "I".charCodeAt(0)) {
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && e.keyCode === "C".charCodeAt(0)) {
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && e.keyCode === "J".charCodeAt(0)) {
+        return false;
+      }
+      if (e.ctrlKey && e.keyCode === "U".charCodeAt(0)) {
+        return false;
+      }
+      // to disable copy/paste
+      if (e.ctrlKey && e.keyCode === "C".charCodeAt(0)) {
+        return false;
+      }
+      if (e.ctrlKey && e.keyCode === "V".charCodeAt(0)) {
+        return false;
+      }
+    };
   }, []);
 
   return (
@@ -88,19 +114,6 @@ const App = () => {
         code={code}
       />
       <div className="main">
-        {/* {!output
-          ? <DefaultWindow
-              code={code}
-              startGame={startGame}
-              stopGame={stopGame}
-            />
-          : <DisplayWindow
-              html={html}
-              css={css}
-              js={js}
-              saveToLocalStorage={saveToLocalStorage}
-            />} */}
-
         <DefaultWindow
           code={code}
           startGame={startGame}
