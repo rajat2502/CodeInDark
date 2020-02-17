@@ -65,7 +65,7 @@ const DefaultWindow = ({ code, startGame, stopGame, output }) => {
       {!code
         ? <FuntionButton
             children="Start Coding!"
-            onClick={() => startTimer(300)}
+            onClick={() => startTimer(10)}
             styles={{ fontSize: "1.4rem" }}
           />
         : null}

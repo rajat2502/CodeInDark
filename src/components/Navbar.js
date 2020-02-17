@@ -2,7 +2,9 @@ import React, { Fragment } from "react";
 
 import FuntionButton from "./FuntionButton";
 
-const Navbar = ({ save, view, output, seeOutput, code }) => {
+import { downloadFile } from "./downloadFile";
+
+const Navbar = ({ save, output, seeOutput, code }) => {
   return (
     <div className="navbar">
       <div className="logo">
@@ -38,6 +40,33 @@ const Navbar = ({ save, view, output, seeOutput, code }) => {
         </p>
       </div>
       <div className="buttons">
+        {!code && output
+          ? <FuntionButton
+              children={
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14.021"
+                    height="15.62"
+                    viewBox="0 0 14.021 15.62"
+                    style={{
+                      fill: "#fff",
+                      fillRule: "evenodd",
+                      marginRight: "5px"
+                    }}
+                  >
+                    <defs />
+                    <path
+                      d="M4.807,1.829c.506,0,.629.293.275.654L1.5,6.134a.913.913,0,0,0,1.29,1.293L5.667,4.545c.239-.239.432-.161.432.174v9.987a.912.912,0,1,0,1.824,0V4.719c0-.336.192-.415.432-.174l2.874,2.883a.913.913,0,0,0,1.29-1.293L8.913,2.478c-.354-.359-.228-.649.275-.649h3.919a.914.914,0,0,0,0-1.829H.914a.914.914,0,0,0,0,1.829Z"
+                      transform="translate(14.021 15.62) rotate(180)"
+                    />
+                  </svg>
+                  <span>Download file</span>
+                </div>
+              }
+              onClick={downloadFile}
+            />
+          : null}
         {code
           ? <Fragment>
               <FuntionButton
