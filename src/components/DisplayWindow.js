@@ -20,7 +20,6 @@ const DisplayWindow = ({ html, css, js, output }) => {
       <section className="result">
         <iframe title="result" className="iframe" ref={iframeRef} />
       </section>
-      />
     </div>
   );
 };

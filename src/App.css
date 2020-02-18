@@ -162,9 +162,49 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
   text-align: center;
   color: white;
+  padding: 20px;
+}
+
+.default-window > div {
+  text-align: center;
+  margin: 20px;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 1.4;
+}
+
+.default-window-head {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  letter-spacing: 0.18ch;
+}
+
+.default-window ol li {
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.timer {
+  margin-bottom: 10px;
+}
+
+.timer span {
+  font-weight: 200;
+  font-size: 1.8rem;
+}
+
+.countdown {
+  color: red;
 }
 
 .display-window {
@@ -218,7 +258,7 @@ svg {
   }
 
   .main {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .playground {
@@ -236,26 +276,26 @@ svg {
   .display-window > button {
     display: none;
   }
+
+  .default-window-head {
+    font-size: 1.6rem;
+  }
+
+  .instructions {
+    line-height: 1.5;
+  }
+
+  .default-window ol li {
+    font-size: 1.2rem;
+  }
+
+  .mobile-playground {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 450px) {
   .btn {
     font-size: 13px;
   }
-}
-
-.default-window-head {
-  margin: 10px;
-  text-transform: uppercase;
-  font-size: 2.2rem;
-  letter-spacing: 0.15ch;
-}
-
-.timer span {
-  font-weight: 200;
-  font-size: 1.8rem;
-}
-
-.countdown {
-  color: red;
 }

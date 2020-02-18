@@ -25,7 +25,6 @@ const App = () => {
   const [html, sethtml] = useState("");
   const [css, setcss] = useState("");
   const [js, setjs] = useState("");
-  const [view, toggleView] = useState(false); // false for normal view, true for fullScreen
   const [output, setOutput] = useState(false);
   const [code, setcode] = useState(false);
 
@@ -78,7 +77,7 @@ const App = () => {
     // logic to disable from inspect/copy/paste
     document.onkeydown = function(e) {
       // to disble inspect
-      if (e.keyCode == 123) {
+      if (e.keyCode === 123) {
         return false;
       }
       if (e.ctrlKey && e.shiftKey && e.keyCode === "I".charCodeAt(0)) {
@@ -107,7 +106,6 @@ const App = () => {
     <div className="App">
       <Navbar
         save={saveToLocalStorage}
-        view={view}
         html={html}
         output={output}
         seeOutput={seeOutput}
@@ -128,7 +126,10 @@ const App = () => {
           output={output}
         />
 
-        <section className="playground" style={!code ? { width: "0" } : null}>
+        <section
+          className={code ? "playground" : "playground mobile-playground"}
+          style={!code ? { width: "0" } : null}
+        >
           <CodeEditor
             langName="HTML"
             value={html}
